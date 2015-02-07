@@ -44,6 +44,9 @@ Temporary Items
 
 .vagrant
 *.pyc
-.idea/*
+.idea
 *.name
 *.sqlite3
+
+projects/DeveloperWeek2015/.idea/workspace.xml
+
