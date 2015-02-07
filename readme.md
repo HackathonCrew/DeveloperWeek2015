@@ -1,5 +1,5 @@
 
-Install
+Install instructions
 
 * Vagrant
 * Virtual Box
