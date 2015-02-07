@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.network :private_network, ip: "192.168.33.11"
 
   #shared
-  config.vm.synced_folder "./projects", "/projects"
+  config.vm.synced_folder "./", "/projects/DeveloperWeek2015"
 
   #virtualbox
   if defined? VagrantVbguest
