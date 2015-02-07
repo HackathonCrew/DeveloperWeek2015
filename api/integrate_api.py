@@ -11,3 +11,12 @@ def getStatement():
     }
 
     return json.dumps(statement)
+
+
+def getPartyArray():
+    parties = [
+        'republican',
+        'democrat'
+    ]
+
+    return json.dumps(parties)
