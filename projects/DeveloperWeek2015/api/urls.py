@@ -3,6 +3,6 @@ from api import views
 from django.views.generic import DetailView, ListView
 
 urlpatterns = patterns('',
-    url(r'^getStatement$', views.getStatement),
-    url(r'^getPartyArray$', views.getPartyArray),
+    url(r'^get_statement$', views.returnStatement),
+    url(r'^get_party_array$', views.getPartyArray),
 )
