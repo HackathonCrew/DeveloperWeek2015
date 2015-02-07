@@ -1,5 +1,4 @@
-def returnPolitifact(request):
-    return HttpResponse(getPolitiafct())
+import json
 
 def getPolitifact():
     statement = {
