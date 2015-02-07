@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import json
 
 # Create your views here.
 
@@ -11,7 +12,7 @@ def getStatement():
         'source_url':'http://www.politifact.com/truth-o-meter/statements/2011/dec/11/michele-bachmann/michele-bachmann-says-former-mass-gov-mitt-romney-/'
     }
 
-    return statement
+    return json.dumps(statement)
 
 def getPartyArray():
     parties = [
