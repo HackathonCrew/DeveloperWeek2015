@@ -5,7 +5,7 @@ Install instructions
 * Virtual Box
 * Run command "vagrant plugin install vagrant-cachier" for repeat log speed boosts when reprovisioning
 * SSH Onto Box
-* pip install -r /projects/DeveloperWeek2015/requirements.txt
+* sudo pip install -r /projects/DeveloperWeek2015/requirements.txt
 
 To Run Website:
 
