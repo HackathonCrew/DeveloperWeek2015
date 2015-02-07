@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import json
 from django.http import HttpResponse
+from integrate_api import getStatement
 
 # Create your views here.
 
