@@ -1,1 +1,1 @@
-web: gunicorn populargithub.wsgi:application --log-file -
+web: gunicorn developerweek2015.wsgi:application --log-file -
