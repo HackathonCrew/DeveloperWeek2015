@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url, include
-from github import views
+from api import views
 from django.views.generic import DetailView, ListView
 
 urlpatterns = patterns('',
