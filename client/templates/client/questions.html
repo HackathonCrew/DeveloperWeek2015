@@ -6,12 +6,12 @@
 <p>What party is the person who said this?</p>
 
 <!-- This list should be dynamic -->
-<a href="">Democrat</a> | <a href="">Republican</a>
+<a ng-click="selectParty()" href="">{%verbatim%}{{party[0] | capitalize}}{%endverbatim%}</a> | <a ng-click="selectParty()" href="">{%verbatim%}{{party[1] | capitalize}}{%endverbatim%}</a>
 
 <hr/>
 
 
-<img src = "{%verbatim%}{{politicians.image_url}}{%endverbatim%}"/>
+<img src = "{%verbatim%}{{politicians.image_url}}{%endverbatim%}" ng-show="clicked"/>
 
 <div>
     <p>&quot;The reason we even have colleges is that at some point there were politicians who said, &lsquo;You know what? We should start colleges.&rsquo; &quot;</p>
@@ -21,7 +21,7 @@
 
 <p>You were wrong!</p>
 
-<a href=""> Play Again?</a>
+<a ng-click="reloadPage()" href="" class="btn btn-primary" role="button"> Play Again?</a>
 
 <hr/>
 
