@@ -1,4 +1,5 @@
-var clientApp = angular.module('clientApp', []);
+var clientApp = angular.module('clientApp', [])
+
 
 //Do dynamic angular stuff
 clientApp.controller('ClientController', ['$scope', '$http', function($scope, $http){
@@ -11,3 +12,5 @@ clientApp.controller('ClientController', ['$scope', '$http', function($scope, $h
 
 
 }]);
+
+//Do dynamic angular stuff
