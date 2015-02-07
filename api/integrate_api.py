@@ -14,9 +14,9 @@ def getStatement():
 
 
 def getPartyArray():
-    parties = [
+    parties = {'party':[
         'republican',
         'democrat'
-    ]
+    ]}
 
     return json.dumps(parties)
