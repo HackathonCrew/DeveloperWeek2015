@@ -8,7 +8,6 @@ pytz==2011k
 requests==2.5.0
 urllib3==1.9.1
 pycrypto==2.4.1
-pyOpenSSL==0.12
 static==0.4
 wsgiref==0.1.2
 whitenoise==1.0.6
