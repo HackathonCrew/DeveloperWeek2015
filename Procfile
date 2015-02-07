@@ -1,1 +1,1 @@
-web: gunicorn developerweek2015.wsgi:application --log-file -
+web: gunicorn DeveloperWeek2015.wsgi:application --log-file -
