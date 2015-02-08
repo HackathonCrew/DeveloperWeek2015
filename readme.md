@@ -15,4 +15,4 @@ To Run Website:
 * Go to http://192.168.33.11:8000/ on your browser
 
 update pip:
-easy_install -U pip
+sudo easy_install -U pip
