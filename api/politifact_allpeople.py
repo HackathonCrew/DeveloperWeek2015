@@ -63,6 +63,7 @@ def getAllPeople():
                 continue
 
             print 'adding {0} {1}'.format(first_name,last_name)
+            person = person.strip()
             clean_people.append(person)
 
             if person['party']['party'] not in parties:
