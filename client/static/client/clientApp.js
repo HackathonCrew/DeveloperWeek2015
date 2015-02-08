@@ -59,7 +59,7 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', '$timeout', f
 
         var bubble = document.getElementById("bubble");
         var leftoffset = $scope.politicians.text_offset.offset[0] + off_image;
-        var bottomoffset = $scope.politicians.text_offset.offset[1] + 250;
+        var bottomoffset = $scope.politicians.text_offset.offset[1] + 220;
         $(bubble).css({bottom: bottomoffset, left: leftoffset});
 
         $scope.scoreTotal += 1;
