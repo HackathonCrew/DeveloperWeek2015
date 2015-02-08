@@ -64,7 +64,7 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
         // $('#test').lettering();
     }
 
-    $scope.showPolitician = function()
+    $scope.showPolitician = function(el)
     {
         $scope.clicked = true;
         var box = document.getElementById("box");
@@ -80,6 +80,8 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
         var leftoffset = $scope.politicians.text_offset.offset[0] + 150;
         var bottomoffset = $scope.politicians.text_offset.offset[1] + 120;
         $(bubble).css({bottom: bottomoffset, left: leftoffset});
+
+        $scope.getParty(el);
     }
 
     $http.get('/api/get_party_array')
