@@ -5,6 +5,7 @@ var clientApp = angular.module('clientApp', ['ngSanitize']);
 clientApp.controller('ClientController', ['$scope', '$http', '$q', function($scope, $http, $q){
     $scope.clicked = false;
     $scope.politician_array = [];
+    $scope.correct = false;
 
     $scope.getData = function(){
         console.log('requesting new politician');
@@ -13,7 +14,7 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
             .success(function(data, status, headers, config){
                 // $scope.politicians = data;
                 console.log(data);
-                $('#test').lettering('words').children('span').lettering();
+                // $('#test').lettering('words').children('span').lettering();
                 $scope.politician_array.push(data);
                 $scope.politicians = $scope.politician_array[0];
                 //this is bad code, but this will infinitely increase the cache of politicians
@@ -21,6 +22,14 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
             });
 
         return promise;
+    }
+
+    $scope.getParty = function(el){
+        if (el == $scope.politicians.party){
+            $scope.correct = true;
+        }else{
+            $scope.correct = false;
+        }
     }
 
     $scope.showNewQuote = function(){
