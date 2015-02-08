@@ -7,8 +7,11 @@ def randomStatement(name_slug):
     data = loads(json_data.text)
 
     #choice is a pythonic way to select a random number
-    data = choice(data)
-    politifact_dict = {}
+    try:
+        data = choice(data)
+    except:
+        return {}
+        exit()
 
     politifact_dict = {'statement_url': str(data['statement_url']), 
     'name_slug':str(data['speaker']['name_slug']), 'statement_type':str(data['statement_type']['statement_type']), 'party':str(data['speaker']['party']['party']), 'statement':str(data['statement'])}

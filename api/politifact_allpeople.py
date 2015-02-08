@@ -14,6 +14,9 @@ def getAllPeople():
         politifact_people = loads(r.text)
         
         #TODO: filter out invalid users
+        clean_people = []
+        # for person in politifact_people:
+
         
         cache.set('politifact_people', politifact_people, None)
         
