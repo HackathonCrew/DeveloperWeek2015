@@ -88,27 +88,3 @@ p.thought:after {
     -moz-box-shadow: -3px 3px 4px #989898;
     box-shadow: -3px 3px 8px #989898;
 }
-
-.demo {
-            padding: 50px;
-            border:1px solid #ccc;
-            font-weight:bold;
-            color: red;
-            background:#d0d0d0;
-            font-size:20px;
-            line-height:1.5;
-            text-align:center;
-        }
-
-        .demo h1 { font-size:72px;  text-transform:uppercase; margin-bottom:0px;}
-        .char2,
-        #demo2 .word2,
-        .line2 { color: orange; }
-        .char3,
-        .word3,
-        .line3 { color: yellow; }
-        .char4,
-        .line4 { color: blue; }
-        .char5 { color: green; }
-        .char6 { color: indigo; }
-        .char7 { color: violet; }

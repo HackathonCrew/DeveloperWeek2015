@@ -39,7 +39,7 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
         $scope.politicians = $scope.politician_array[0];
         $scope.politician_array.shift();
         $scope.clicked = false;
-        $('#test').lettering();
+        // $('#test').lettering();
     }
 
     $scope.showPolitician = function()
