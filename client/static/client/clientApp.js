@@ -6,6 +6,11 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
     $scope.clicked = false;
     $scope.politician_array = [];
     $scope.correct = false;
+    $scope.scoreTotal = 0;
+    $scope.scoreCorrect = 0;
+    $scope.scoreWrong = 0;
+    $scope.scoreCorrectPercentage = 0;
+    $scope.scoreWrongPercentage  = 0;
 
     $scope.getData = function(){
         console.log('requesting new politician');
@@ -25,11 +30,19 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
     }
 
     $scope.getParty = function(el){
+        $scope.scoreTotal += 1;
         if (el == $scope.politicians.party){
             $scope.correct = true;
+            $scope.scoreCorrect += 1;
         }else{
             $scope.correct = false;
         }
+    }
+
+    $scope.calculateScore = function(){
+        $scope.scoreWrong = $scope.scoreTotal - $scope.scoreCorrect;
+        $scope.scoreCorrectPercentage = ($scope.scoreCorrect / $scope.scoreTotal) * 100.0;
+        $scope.scoreWrongPercentage = 100.0 - $scope.scoreCorrectPercentage;
     }
 
     $scope.showNewQuote = function(){
@@ -72,12 +85,11 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
     $http.get('/api/get_party_array')
         .success(function(data, status, headers, config){
             $scope.party = data.party;
-            // console.log(p)
         });
 
-    $scope.reloadPage = function(){
-        window.location.reload();
-    }
+    // $scope.reloadPage = function(){
+    //     window.location.reload();
+    // }
 
 }]);
 
