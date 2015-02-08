@@ -1,1 +1,8 @@
 .scoreCard { }
+
+.footer{
+    bottom: 0;
+    position: fixed;
+    padding-bottom: 15px;
+    z-index:150;
+}

@@ -17,7 +17,7 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', '$timeout', f
             .success(function(data, status, headers, config){
                 console.log(data);
                 $scope.politician_array.push(data);
-                
+
                 $scope.getData();
             });
 
@@ -25,10 +25,10 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', '$timeout', f
     }
 
     $scope.showNewQuote = function(){
-        
+
         if ($scope.politician_array.length == 0)
         {
-            
+
             console.log('no politicians, waiting until we have another one')
             $scope.politician = undefined;
             $timeout($scope.showNewQuote, 100, true)
@@ -66,7 +66,7 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', '$timeout', f
         }else{
             $scope.correct = false;
         }
-        $scope.scoreCorrectPercentage = ($scope.scoreCorrect / $scope.scoreTotal) * 100.0;
+        $scope.scoreCorrectPercentage = Math.floor(($scope.scoreCorrect / $scope.scoreTotal) * 100.0);
     }
 
     $http.get('/api/get_party_array')

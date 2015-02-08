@@ -1,4 +1,8 @@
 
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
 #outer{
     position:relative;
 }
@@ -7,6 +11,16 @@
     display: block;
     margin-left: 150px;
     margin-right: auto;
+    padding-bottom: 15px;
+}
+
+#test{
+    font-size: 40px;
+    padding-top: 50px;
+}
+
+.centered{
+    text-align:center;
 }
 
 #box{

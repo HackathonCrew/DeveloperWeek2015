@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div ng-controller="ClientController" data-ng-init="showNewQuote()">
+<div ng-controller="ClientController" data-ng-init="getData(); showNewQuote()">
     {%verbatim%}
     <div class="scoreCard">
         <div class="scoreBox"><label for="score">Score: <span class="scorePercent">{{scoreCorrectPercentage}}</span> (<span class="scoreCorrect">{{scoreCorrect}}</span> out of <span class="scoreTotal">{{scoreTotal}}</span>)</label></div>
@@ -10,13 +10,13 @@
     </div>
     {%endverbatim%}
 
-    <div ng-show="clicked == false && politician_array.length==0">
+    <div ng-show="clicked == false && politicians === undefined" id="test" class="centered">
         One second we're fetching some politician information. ;)
     </div>
 
-    <div ng-show="clicked == false && politician_array.length !=0">
+    <div ng-show="clicked == false && politicians !== undefined" class="centered">
         <h2>What party is the person who said this?</h2>
-        <p id="test" ng-hide="clicked" ng-bind-html="politicians.statement"></p>
+        <p id="test" style="" ng-hide="clicked" ng-bind-html="politicians.statement"></p>
         <div class="footer">
             <span ng-repeat="myParty in party">
                 {%verbatim%}<a ng-click="showPolitician(myParty)" class="btn btn-primary" role="button">{{myParty | capitalize}}</a>{%endverbatim%}
@@ -28,7 +28,7 @@
     <div id = "outer" ng-show="clicked" >
         <img class="politics" id="img_polit" src = "{{politicians.image_url}}" />
         <div id="box" ng-show="showFaceBox==true"></div>
-        <p class="thought animated infinite tada" id="bubble" ng-bind-html="politicians.statement"></p>    
+        <p class="thought animated infinite tada" id="bubble" ng-bind-html="politicians.statement"></p>
         <div class="footer">
             <p ng-show="correct">You were right!</p>
             <p ng-show="correct == false">You were wrong!</p>
@@ -37,6 +37,6 @@
         </div>
     </div>
     {%endverbatim%}
-    
+
 </div>
 {% endblock %}
