@@ -13,9 +13,31 @@ def getAllPeople():
         r = get('http://www.politifact.com/api/people/all/json/')
         politifact_people = loads(r.text)
         
-        #TODO: filter out invalid users
+        clean_people = []
         
-        cache.set('politifact_people', politifact_people, None)
+        for person in politifact_people:
+        
+            #TODO: filter out invalid users
+            first_name = person['first_name']
+            last_name = person['last_name']
+            name_slug = person['name_slug']
+
+            
+            print "trying " + first_name + " " + last_name
+            if not first_name:
+                continue
+            elif not last_name:
+                continue
+            elif person['party']['party']=='None':
+                continue
+            elif person['party']['party']=='Organization':
+                continue
+            elif person['party']['party']=='Journalist':
+                continue
+            
+            clean_people.append(person)
+        
+        cache.set('politifact_people', clean_people, None)
         
     #return cached users
     return politifact_people

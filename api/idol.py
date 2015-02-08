@@ -48,7 +48,7 @@ def addTextToIdol():
 
             data = {
             
-                'reference':id
+                'reference':id,
                 'title':'{0} {1}'.format(first_name,last_name),
                 #parametric field
                 'politician':'{0} {1}'.format(first_name,last_name),
