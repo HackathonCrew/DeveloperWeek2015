@@ -1,4 +1,6 @@
-.scoreCard { }
+.scoreCard {
+    font-size: 20px;
+}
 
 .footer{
     bottom: 0;

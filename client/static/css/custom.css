@@ -1,17 +1,46 @@
 
-body{
+html,body{
     font-family: 'Source Sans Pro', sans-serif;
+    height:100%;
+    font-weight:bold;
 }
 
+h1{
+    font-size: 40px;
+}
+
+.container{
+    padding-right:70px;
+    padding-left:70px;
+    background-image: url("img/flag.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-color: white;
+    height:auto;
+    min-height:100%;
+
+}
 #outer{
     position:relative;
 }
 
 .politics{
     display: block;
-    margin-left: 150px;
+    margin-left: 250px;
     margin-right: auto;
     padding-bottom: 15px;
+    margin-top: 50px;
+}
+
+.politdata{
+    margin-left: 250px;
+    padding-top: 50px;
+    font-size: 25px;
+}
+
+img.result{
+    width:15%;
+    height:15%;
 }
 
 #test{
@@ -21,6 +50,7 @@ body{
 
 .centered{
     text-align:center;
+    margin: 0 auto;
 }
 
 #box{

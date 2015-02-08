@@ -5,17 +5,19 @@
 <div ng-controller="ClientController" data-ng-init="getData(); showNewQuote()">
     {%verbatim%}
     <div class="scoreCard">
-        <div class="scoreBox"><label for="score">Score: <span class="scorePercent">{{scoreCorrectPercentage}}</span> (<span class="scoreCorrect">{{scoreCorrect}}</span> out of <span class="scoreTotal">{{scoreTotal}}</span>)</label></div>
+        <div class="scoreBox"><label for="score">Score: <span class="scorePercent">{{scoreCorrectPercentage}}%</span> (<span class="scoreCorrect">{{scoreCorrect}}</span> out of <span class="scoreTotal">{{scoreTotal}}</span>)</label></div>
         Politician Cache: {{ politician_array.length }}
     </div>
     {%endverbatim%}
 
     <div ng-show="clicked == false && politicians === undefined" id="test" class="centered">
-        One second we're fetching some politician information. ;)
+        Just a moment! We are filibustering! ;)
+        </br>
+        <img style="padding-top:55px;" class="result" src="static/css/img/loading.gif"/>
     </div>
 
     <div ng-show="clicked == false && politicians !== undefined" class="centered">
-        <h2>What party is the person who said this?</h2>
+        <h2>Which party said this?</h2>
         <p id="test" style="" ng-hide="clicked" ng-bind-html="politicians.statement"></p>
         <div class="footer">
             <span ng-repeat="myParty in party">
@@ -26,12 +28,20 @@
 
     {%verbatim%}
     <div id = "outer" ng-show="clicked" >
-        <img class="politics" id="img_polit" src = "{{politicians.image_url}}" />
-        <div id="box" ng-show="showFaceBox==true"></div>
-        <p class="thought animated infinite tada" id="bubble" ng-bind-html="politicians.statement"></p>
+        <div>
+            <img class="politics" id="img_polit" src = "{{politicians.image_url}}"/>
+            <div id="box" ng-show="showFaceBox==true"></div>
+            <p class="thought animated tada" id="bubble" ng-bind-html="politicians.statement"></p>
+            <div class="politdata"> {{politicians.politician}} | {{politicians.party}}
+                <img class="result animated flash" src="static/css/img/green_check.png" ng-show="correct"/>
+                <img class="result animated flash" src="static/css/img/x-mark.png" ng-show="correct == false"/>
+            </div>
+        </div>
         <div class="footer">
-            <p ng-show="correct">You were right!</p>
-            <p ng-show="correct == false">You were wrong!</p>
+            <!-- <img class="result" src="static/css/img/green_check.png" ng-show="correct"/> -->
+            <!-- <img class="result" src="static/css/img/x-mark.png" ng-show="correct == false"/> -->
+            <!-- <p ng-show="correct">You were right!</p> -->
+            <!-- <p ng-show="correct == false">You were wrong!</p> -->
             <a ng-click = "showNewQuote()" class="btn btn-primary" role="button"> Play Again?</a>
             <label><input type="checkbox" checked="true" ng-model="showFaceBox"> Show Face Detection</label>
         </div>

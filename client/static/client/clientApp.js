@@ -47,16 +47,19 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', '$timeout', f
         $scope.clicked = true;
         var box = document.getElementById("box");
 
+        var off_image = parseInt($('.politics').css('margin-left'));
+        console.log("test", off_image);
+
         var facetop = $scope.politicians.text_offset.top;
-        var faceleft = $scope.politicians.text_offset.left + 150;
+        var faceleft = $scope.politicians.text_offset.left + off_image;
         var faceheight = $scope.politicians.text_offset.height;
         var facewidth = $scope.politicians.text_offset.width;
 
         $(box).css({top: facetop, left: faceleft, height: faceheight, width: facewidth});
 
         var bubble = document.getElementById("bubble");
-        var leftoffset = $scope.politicians.text_offset.offset[0] + 150;
-        var bottomoffset = $scope.politicians.text_offset.offset[1] + 120;
+        var leftoffset = $scope.politicians.text_offset.offset[0] + off_image;
+        var bottomoffset = $scope.politicians.text_offset.offset[1] + 250;
         $(bubble).css({bottom: bottomoffset, left: leftoffset});
 
         $scope.scoreTotal += 1;
