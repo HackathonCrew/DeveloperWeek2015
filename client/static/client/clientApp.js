@@ -19,7 +19,6 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
                 console.log(data);
                 // $('#test').lettering('words').children('span').lettering();
                 $scope.politician_array.push(data);
-                $scope.politicians = $scope.politician_array[0];
                 //this is bad code, but this will infinitely increase the cache of politicians
                 $scope.getData();
             });
@@ -27,38 +26,21 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
         return promise;
     }
 
-    $scope.getParty = function(el){
-        $scope.scoreTotal += 1;
-        if (el == $scope.politicians.party){
-            $scope.correct = true;
-            $scope.scoreCorrect += 1;
-        }else{
-            $scope.correct = false;
-        }
-        $scope.scoreCorrectPercentage = ($scope.scoreCorrect / $scope.scoreTotal) * 100.0;
-    }
-
-    // $scope.calculateScore = function(){
-    //     $scope.scoreCorrectPercentage = ($scope.scoreCorrect / $scope.scoreTotal) * 100.0;
-    // }
-
     $scope.showNewQuote = function(){
         var myPromise;
         if ($scope.politician_array.length <= 1){
             myPromise = $scope.getData();
-            console.log('oldpoli', $scope.politicians);
             myPromise.then(function(){
                 $scope.showNewQuote();
             });
-
-            console.log('newpoli', $scope.politicians);
             return;
         }
 
+        console.log('oldpoli', $scope.politicians);
         $scope.politicians = $scope.politician_array[0];
         $scope.politician_array.shift();
+        console.log('newpoli', $scope.politicians);
         $scope.clicked = false;
-        // $('#test').lettering();
     }
 
     $scope.showPolitician = function(el)
@@ -78,20 +60,21 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
         var bottomoffset = $scope.politicians.text_offset.offset[1] + 120;
         $(bubble).css({bottom: bottomoffset, left: leftoffset});
 
-        $scope.getParty(el);
+        $scope.scoreTotal += 1;
+        if (el == $scope.politicians.party){
+            $scope.correct = true;
+            $scope.scoreCorrect += 1;
+        }else{
+            $scope.correct = false;
+        }
+        $scope.scoreCorrectPercentage = ($scope.scoreCorrect / $scope.scoreTotal) * 100.0;
     }
 
     $http.get('/api/get_party_array')
         .success(function(data, status, headers, config){
             $scope.party = data.party;
         });
-
-    // $scope.reloadPage = function(){
-    //     window.location.reload();
-    // }
-
 }]);
-
 
 clientApp.filter('capitalize', function() {
     return function(input, scope) {
@@ -103,14 +86,4 @@ clientApp.filter('capitalize', function() {
             return "";
         }
     }
-});
-
-clientApp.directive("jqTable", function() {
-    console.log("kk");
-    // return function(scope, element, attrs) {
-    //     scope.$watch("assignments", function() {
-    //         $('#test').lettering();
-    //         console.log("fllflf");
-    //     });
-    // };
 });
