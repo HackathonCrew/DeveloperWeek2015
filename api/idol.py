@@ -1,4 +1,5 @@
 import requests
+from json import loads
 
 
 def getMouthCoordinates(url):
@@ -8,7 +9,6 @@ def getMouthCoordinates(url):
             'apikey': '31379774-e946-4bff-b26e-35e93ea7a67e',
             'url' : url,
         })
-    print r.text
+    face = loads(r.text)['face'][0]
     
-    return (0,0)
-    
+    return (face['left'] + face['width'], int(face['height'] * .3))
