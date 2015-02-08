@@ -13,9 +13,7 @@ class Politifact_AllPeople(TestCase):
     
     
     def test_random(self):
-        allPeople = politifact_allpeople.getAllPeople()
-        allPeople = [allPeople[0]]
-        print allPeople
-        cache.set('politifact_people', allPeople, None)
+        cache.set('politifact_people', [{'name_slug': 'name'}], None)
+        allPeople = cache.get('politifact_people')
         randomPerson = politifact_allpeople.randomPerson()
         self.assertEqual(allPeople[0]['name_slug'], randomPerson['name_slug'])
