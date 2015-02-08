@@ -29,13 +29,14 @@ def randomStatements(name_slug,n):
     data = loads(json_data.text)
     statements = []
     statement_urls = []
-
+    statementArray = []
     for each in data:
         statement = cleanStatement(each['statement'])
-        statements.append(statement)
-        statement_urls.append(each['statement_url'])
+        # statements.append(statement)
+        statement_url = (each['statement_url'])
+        statementArray.append({'statement':statement, 'url':statement_url})
 
-    return statements
+    return statementArray
 
 def cleanStatement(a):
     statement = html2text(a)
