@@ -1,18 +1,22 @@
 {% extends "client/__base.html" %}
 
 {% block content %}
-<p>&quot;The reason we even have colleges is that at some point there were politicians who said, &lsquo;You know what? We should start colleges.&rsquo; &quot;</p>
+<p>&quot;{%verbatim%}{{politicians.statement}}{%endverbatim%}.&quot;</p>
 
 <p>What party is the person who said this?</p>
 
 <!-- This list should be dynamic -->
-<a ng-click="selectParty()" href="">{%verbatim%}{{party[0] | capitalize}}{%endverbatim%}</a> | <a ng-click="selectParty()" href="">{%verbatim%}{{party[1] | capitalize}}{%endverbatim%}</a>
+<a ng-click="selectParty()" href="">{%verbatim%}{{party[0] | capitalize}}{%endverbatim%}</a> |
+<a ng-click="selectParty()" href="">{%verbatim%}{{party[1] | capitalize}}{%endverbatim%}</a>
 
 <hr/>
 
-
-<img src = "{%verbatim%}{{politicians.image_url}}{%endverbatim%}" ng-show="clicked"/>
-
+<div id = "outer" ng-show="clicked" >
+    <img src = "{%verbatim%}{{politicians.image_url}}{%endverbatim%}" />
+    <p class="thought animated infinite tada">
+        &quot;{%verbatim%}{{politicians.statement}}{%endverbatim%}.&quot;
+    </p>
+</div>
 <div>
     <p>&quot;The reason we even have colleges is that at some point there were politicians who said, &lsquo;You know what? We should start colleges.&rsquo; &quot;</p>
 </div>

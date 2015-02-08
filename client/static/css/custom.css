@@ -1,0 +1,71 @@
+
+#outer{
+    position:relative;
+}
+
+/* bubble code from http://cssdemos.tupence.co.uk/speech-bubbles.htm */
+
+/****** FIRST CREATE THE BUBBLE *****/
+p.thought {
+    /* position:relative; /*see the support section below for more info*/
+    position: absolute;
+    bottom: 20px;
+    left: 550px;
+    width:400px; /*size of the bubble*/
+    padding:20px 40px;
+    margin:10px 10px 80px 40px;
+    /**give the bubble's background a gradient**/
+    background:#f7a944; /*fallback colour for non-supporting browsers*/
+    background:-webkit-gradient(linear, 0 0, 0 100%, from(#fac868), to(#f3961c));
+    background:-moz-linear-gradient(#fac868, #f3961c);
+    background:-o-linear-gradient(#fac868, #f3961c);
+    background:linear-gradient(#fac868, #f3961c);
+    /**give the corners a large curve**/
+    -webkit-border-radius:180px;
+    -moz-border-radius:180px;
+    border-radius:180px;
+    /**add a drop shadow to the bubble**/
+    -webkit-box-shadow: -3px 4px 8px #989898;
+    -moz-box-shadow: -3px 4px 8px #989898;
+    box-shadow: -3px 4px 8px #989898;
+    /**style the text**/
+    color:#575544;
+    font-size:1em;
+    letter-spacing:.06em;
+}
+/******NOW CREATE THE THOUGHT CIRCLES*****/
+/****FIRST THE LARGE CIRCLE***/
+p.thought:before {
+    content:"";
+    position:absolute; /*see the support section below for more info*/
+    bottom:-40px; /*distance from the bottom of the bubble*/
+    left:20px; /*distance from the left edge of the bubble*/
+    background:#f3961c;
+    width:30px; /*same as the height*/
+    height:30px; /*same as the width*/
+    /*add a curve to the corners the same size as the height and width*/
+    -webkit-border-radius:30px;
+    -moz-border-radius:30px;
+    border-radius:30px;
+    /*add a drop shadow*/
+    -webkit-box-shadow: -3px 3px 4px #989898;
+    -moz-box-shadow: -3px 3px 4px #989898;
+    box-shadow: -3px 3px 8px #989898;
+}
+/*****NOW THE SMALL CIRCLE***/
+/**Created exactly the same way as the large circle, except with smaller width, height and border-radius**/
+p.thought:after {
+    content:"";
+    position:absolute;
+    bottom:-55px;
+    left:0;
+    width:15px;
+    height:15px;
+    background:#f3961c;
+    -webkit-border-radius:15px;
+    -moz-border-radius:15px;
+    border-radius:15px;
+    -webkit-box-shadow: -3px 3px 4px #989898;
+    -moz-box-shadow: -3px 3px 4px #989898;
+    box-shadow: -3px 3px 8px #989898;
+}
