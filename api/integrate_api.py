@@ -39,26 +39,10 @@ def getStatement():
 
     return json.dumps(data)
 
-def getStatementMore():
+def getStatementMore(bio_id,first_name,last_name,name_slug):
 
-    bio_id = ''
-    result = {}
-    count = 0
+    result = randomStatements(name_slug)
 
-    while not bio_id or not result:
-
-        person = randomPerson()
-        first_name = person['first_name']
-        last_name = person['last_name']
-        name_slug = person['name_slug']
-        bio_id = getID(first_name,last_name)
-
-        if not bio_id:
-            count = count + 1
-            continue
-
-        result = randomStatement(name_slug)
-        count = count + 1
 
     image_url = getImg(bio_id)
     text_param = getMouthCoordinates(image_url)
@@ -74,10 +58,9 @@ def getStatementMore():
         'img_height':text_param['height'],
         'img_offset':text_param['offset'],
         'img_left':text_param['left'],
-        'hits':count,
     }
 
-    return json.dumps(data)
+    return data
 
 
 def getPartyArray():

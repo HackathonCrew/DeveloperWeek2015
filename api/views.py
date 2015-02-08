@@ -10,6 +10,3 @@ def returnStatement(request):
 
 def returnPartyArray(request):
     return HttpResponse(getPartyArray())
-
-def returnStatementMore(request):
-    return HttpResponse(getStatementMore())
