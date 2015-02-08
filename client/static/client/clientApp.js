@@ -28,7 +28,8 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', '$timeout', f
 
         if ($scope.politician_array.length == 0)
         {
-
+            var bubble = document.getElementById("bubble");
+            $(bubble).addClass('animated');
             console.log('no politicians, waiting until we have another one')
             $scope.politician = undefined;
             $timeout($scope.showNewQuote, 100, true)
@@ -61,6 +62,7 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', '$timeout', f
         var leftoffset = $scope.politicians.text_offset.offset[0] + off_image;
         var bottomoffset = $scope.politicians.text_offset.offset[1] + 220;
         $(bubble).css({bottom: bottomoffset, left: leftoffset});
+        $(bubble).addClass('animated');
 
         $scope.scoreTotal += 1;
         if (el == $scope.politicians.party){
