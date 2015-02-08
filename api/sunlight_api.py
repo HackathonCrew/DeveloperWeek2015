@@ -1,6 +1,8 @@
 import json
-from sunlight import congress
+from sunlight import congress,config
 img_size = '450x550'
+config.API_KEY = '16c32e40ccce456a98473e6ca3b7c718'
+
 
 def getImg(person):
 
