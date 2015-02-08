@@ -8,9 +8,7 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
     $scope.correct = false;
     $scope.scoreTotal = 0;
     $scope.scoreCorrect = 0;
-    $scope.scoreWrong = 0;
     $scope.scoreCorrectPercentage = 0;
-    $scope.scoreWrongPercentage  = 0;
 
     $scope.getData = function(){
         console.log('requesting new politician');
@@ -37,13 +35,12 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
         }else{
             $scope.correct = false;
         }
+        $scope.scoreCorrectPercentage = ($scope.scoreCorrect / $scope.scoreTotal) * 100.0;
     }
 
-    $scope.calculateScore = function(){
-        $scope.scoreWrong = $scope.scoreTotal - $scope.scoreCorrect;
-        $scope.scoreCorrectPercentage = ($scope.scoreCorrect / $scope.scoreTotal) * 100.0;
-        $scope.scoreWrongPercentage = 100.0 - $scope.scoreCorrectPercentage;
-    }
+    // $scope.calculateScore = function(){
+    //     $scope.scoreCorrectPercentage = ($scope.scoreCorrect / $scope.scoreTotal) * 100.0;
+    // }
 
     $scope.showNewQuote = function(){
         var myPromise;
