@@ -2,7 +2,7 @@ var clientApp = angular.module('clientApp', ['ngSanitize']);
 
 
 //Do dynamic angular stuff
-clientApp.controller('ClientController', ['$scope', '$http', '$q', function($scope, $http, $q){
+clientApp.controller('ClientController', ['$scope', '$http', '$q', '$timeout', function($scope, $http, $q, $timeout){
     $scope.clicked = false;
     $scope.politician_array = [];
     $scope.correct = false;
@@ -15,11 +15,9 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
 
         promise = $http.get('/api/get_statement')
             .success(function(data, status, headers, config){
-                // $scope.politicians = data;
                 console.log(data);
-                // $('#test').lettering('words').children('span').lettering();
                 $scope.politician_array.push(data);
-                //this is bad code, but this will infinitely increase the cache of politicians
+                
                 $scope.getData();
             });
 
@@ -27,15 +25,16 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
     }
 
     $scope.showNewQuote = function(){
-        var myPromise;
-        if ($scope.politician_array.length <= 1){
-            myPromise = $scope.getData();
-            myPromise.then(function(){
-                $scope.showNewQuote();
-            });
+        
+        if ($scope.politician_array.length == 0)
+        {
+            
+            console.log('no politicians, waiting until we have another one')
+            $scope.politician = undefined;
+            $timeout($scope.showNewQuote, 100, true)
             return;
         }
-
+        console.log('we have a politician, lets queue him up')
         console.log('oldpoli', $scope.politicians);
         $scope.politicians = $scope.politician_array[0];
         $scope.politician_array.shift();
