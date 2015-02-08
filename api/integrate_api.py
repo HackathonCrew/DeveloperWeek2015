@@ -41,7 +41,7 @@ def getStatement():
 
 def getStatementMore(bio_id,first_name,last_name,name_slug):
 
-    result = randomStatements(name_slug)
+    result = randomStatement(name_slug)
 
 
     image_url = getImg(bio_id)
