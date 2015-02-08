@@ -19,6 +19,7 @@ def getStatement():
         bio_id = getID(first_name,last_name)
 
         if not bio_id:
+            count = count + 1
             continue
 
         result = randomStatement(name_slug)
