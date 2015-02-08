@@ -20,6 +20,6 @@ class TestBasic(TestCase):
         self.assertEqual(a['speaker']['last_name'],'Obama')
 
     def test_3(self):
-        a = json.loads(api.politifact_api.getPolitifact())
-        b = api.sunlight_api.getImg(a['speaker']['name_slug'])
-        self.assertEqual(b,'www.test.com')
+        img_url = 'http://theunitedstates.io/images/congress/450x550/P000197.jpg'
+        a = json.loads(api.integrate_api.getStatement())
+        self.assertEqual(a['image_url'],img_url)
