@@ -8,11 +8,6 @@ import api.sunlight_api
 
 # Create your tests here.
 class TestBasic(TestCase):
-    "Basic tests"
-
-    def test_basic(self):
-        a = json.loads(api.integrate_api.getStatement())
-        self.assertEqual('Michele Bachman', a['politician'])
 
     def test_2(self):
         a = json.loads(api.politifact_api.getPolitifact())
@@ -20,6 +15,7 @@ class TestBasic(TestCase):
         self.assertEqual(a['speaker']['last_name'],'Obama')
 
     def test_3(self):
-        a = json.loads(api.politifact_api.getPolitifact())
-        b = api.sunlight_api.getImg(a['speaker']['name_slug'])
-        self.assertEqual(b,'www.test.com')
+        a = json.loads(api.integrate_api.getStatement())
+        # self.assertEqual(a['image_url'],img_url)
+        self.assertIsNotNone(a['image_url'])
+        self.assertEqual(a['source_url'],'www.yourmom.com')

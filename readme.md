@@ -13,3 +13,6 @@ To Run Website:
 * cd /projects/DeveloperWeek2015
 * python manage.py runserver 0.0.0.0:8000
 * Go to http://192.168.33.11:8000/ on your browser
+
+update pip:
+easy_install -U pip
