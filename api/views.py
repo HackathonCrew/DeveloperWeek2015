@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import json
 from django.http import HttpResponse
-from integrate_api import getStatement, getPartyArray
+from integrate_api import getStatement, getPartyArray, getStatementMore
 
 # Create your views here.
 
@@ -10,3 +10,6 @@ def returnStatement(request):
 
 def returnPartyArray(request):
     return HttpResponse(getPartyArray())
+
+def returnStatementMore(request):
+    return HttpResponse(getStatementMore())
