@@ -16,10 +16,8 @@ clientApp.controller('ClientController', ['$scope', '$http', '$q', function($sco
                 $('#test').lettering('words').children('span').lettering();
                 $scope.politician_array.push(data);
                 $scope.politicians = $scope.politician_array[0];
-                if ($scope.politician_array.length < 2)
-                {
-                    $scope.getData();
-                }
+                //this is bad code, but this will infinitely increase the cache of politicians
+                $scope.getData();
             });
 
         return promise;
