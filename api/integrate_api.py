@@ -1,8 +1,9 @@
 import json
 from sunlight_api import getImg, getID
-from politifact_allpeople import randomPerson
+from politifact_allpeople import randomPerson,getAllPeople
 from idol import getMouthCoordinates
 from politifact_api import randomStatement
+from django.core.cache import cache
 
 def getStatement():
 
@@ -66,9 +67,15 @@ def getStatementMore(bio_id,first_name,last_name,name_slug):
 
 
 def getPartyArray():
-    parties = {'party':[
-        'republican',
-        'democrat'
-    ]}
 
-    return json.dumps(parties)
+    parties = cache.get('parties')
+
+    if not parties:
+        getAllPeople()
+        parties = cache.get('parties')
+
+    return parties
+
+
+
+
