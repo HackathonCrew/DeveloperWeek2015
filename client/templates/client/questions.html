@@ -2,37 +2,33 @@
 
 {% block content %}
 
-<p id="test" ng-hide="clicked" ng-bind-html="politicians.statement"></p>
-<!-- This list should be dynamic -->
-<div ng-hide="clicked">
-    <p>What party is the person who said this?</p>
-    <a ng-click="showPolitician()" href="">{%verbatim%}{{party[0] | capitalize}}{%endverbatim%}</a> |
-    <a ng-click="showPolitician()" href="">{%verbatim%}{{party[1] | capitalize}}{%endverbatim%}</a>
+<div ng-controller="ClientController" data-ng-init="showNewQuote()">
+    <div>
+        Score: 100% (1 out of 1)
+        Politician Cache: {%verbatim%}{{ politician_array.length }}{%endverbatim%}
+    </div>
+
+    <div ng-show="clicked == false && politician_array.length==0">
+        One second we're fetching some politician information. ;)
+    </div>
+
+    <div ng-show="clicked == false && politician_array.length !=0">
+        <p>What party is the person who said this?</p>
+        <p id="test" ng-hide="clicked" ng-bind-html="politicians.statement"></p>
+        <ul ng-repeat="myParty in party">
+            <li>{%verbatim%}<a ng-click="showPolitician(myParty)">{{myParty | capitalize}}</a>{%endverbatim%}</li>
+        <ul>
+    </div>
+
+    <div id = "outer" ng-show="clicked" >
+        <img class="politics" id="img_polit" src = "{%verbatim%}{{politicians.image_url}}{%endverbatim%}" />
+        <div id="box" ng-show="showFaceBox==true"></div>
+        <p class="thought animated infinite tada" id="bubble" ng-bind-html="politicians.statement"></p>    
+        <p ng-show="cliecked && correct">You were right!</p>
+        <p ng-show="clicked && correct" >You were wrong!</p>
+        <a ng-show="clicked" ng-click = "showNewQuote()" class="btn btn-primary" role="button"> Play Again?</a>
+        <label><input type="checkbox" checked="true" ng-model="showFaceBox"> Show Face Detection</label>
+
+    </div>
 </div>
-
-<div>
-    <a ng-click = "showNewQuote()" ng-show = "clicked" href = ""> NEXT </a>
-</div>
-
-<hr/>
-
-<div id = "outer" ng-show="clicked" >
-    <img class="politics" id="img_polit" src = "{%verbatim%}{{politicians.image_url}}{%endverbatim%}" />
-    <div id="box"></div>
-    <p class="thought animated infinite tada" id="bubble" ng-bind-html="politicians.statement">
-    </p>
-</div>
-
-<p>You were right!</p>
-
-<p>You were wrong!</p>
-
-<a ng-click="reloadPage()" href="" class="btn btn-primary" role="button"> Play Again?</a>
-
-<hr/>
-
-<div>
-    Score: 100% (1 out of 1)
-</div>
-
 {% endblock %}
