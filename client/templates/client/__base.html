@@ -20,10 +20,12 @@
         <!-- Angular for DataBinding/Templating -->
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular-sanitize.js"></script>
 
         <!-- My Scripts -->
 
         <script src="{% static 'client/clientApp.js' %}"></script>
+        <script src="{% static 'js/jquery.lettering-0.6.1.min.js' %}"></script>
         <link rel="stylesheet" href="{% static 'css/custom.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/animate.css' %}"/>
 
@@ -39,7 +41,7 @@
     <div class="container">
     <h1>DeveloperWeek2015</h1>
     <!---The Navigation bar -->
-    <div class="header">
+    <!--div class="header">
         <nav>
             <ul class="nav nav-pills pull-right">
                 <li role="presentation" class="active"><a href='/' style=" color: white; background-color: #33B7A9;"> Home </a></li>
@@ -47,8 +49,8 @@
                 <li role="presentation"><a href= ''>Contact</a></li>
             </ul>
         </nav>
-    </div>
-    <div ng-controller="ClientController">
+    </div-->
+    <div ng-controller="ClientController" data-ng-init="showNewQuote()">
         {% block content %}
         {% endblock %}
     </div>

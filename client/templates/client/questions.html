@@ -1,24 +1,26 @@
 {% extends "client/__base.html" %}
 
 {% block content %}
-<p>&quot;{%verbatim%}{{politicians.statement}}{%endverbatim%}.&quot;</p>
 
-<p>What party is the person who said this?</p>
-
+<p id="test" ng-hide="clicked" ng-bind-html="politicians.statement"></p>
 <!-- This list should be dynamic -->
-<a ng-click="selectParty()" href="">{%verbatim%}{{party[0] | capitalize}}{%endverbatim%}</a> |
-<a ng-click="selectParty()" href="">{%verbatim%}{{party[1] | capitalize}}{%endverbatim%}</a>
+<div ng-hide="clicked">
+    <p>What party is the person who said this?</p>
+    <a ng-click="showPolitician()" href="">{%verbatim%}{{party[0] | capitalize}}{%endverbatim%}</a> |
+    <a ng-click="showPolitician()" href="">{%verbatim%}{{party[1] | capitalize}}{%endverbatim%}</a>
+</div>
+
+<div>
+    <a ng-click = "showNewQuote()" ng-show = "clicked" href = ""> NEXT </a>
+</div>
 
 <hr/>
 
 <div id = "outer" ng-show="clicked" >
-    <img src = "{%verbatim%}{{politicians.image_url}}{%endverbatim%}" />
-    <p class="thought animated infinite tada">
-        &quot;{%verbatim%}{{politicians.statement}}{%endverbatim%}.&quot;
+    <img class="politics" id="img_polit" src = "{%verbatim%}{{politicians.image_url}}{%endverbatim%}" />
+    <div id="box"></div>
+    <p class="thought animated infinite tada" id="bubble" ng-bind-html="politicians.statement">
     </p>
-</div>
-<div>
-    <p>&quot;The reason we even have colleges is that at some point there were politicians who said, &lsquo;You know what? We should start colleges.&rsquo; &quot;</p>
 </div>
 
 <p>You were right!</p>

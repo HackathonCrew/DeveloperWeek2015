@@ -3,14 +3,32 @@
     position:relative;
 }
 
+.politics{
+    display: block;
+    margin-left: 150px;
+    margin-right: auto;
+}
+
+#box{
+    position:absolute;
+/*    left:262px;
+    top:136px;
+    width: 270px;
+    height:270px;*/
+    border: solid 2px red;
+}
+
 /* bubble code from http://cssdemos.tupence.co.uk/speech-bubbles.htm */
 
 /****** FIRST CREATE THE BUBBLE *****/
+.thought{
+    /*top:100px;*/
+}
 p.thought {
     /* position:relative; /*see the support section below for more info*/
     position: absolute;
-    bottom: 20px;
-    left: 550px;
+    /*bottom: 181px;  to change -50 */
+    /*left: 532px;  to change */
     width:400px; /*size of the bubble*/
     padding:20px 40px;
     margin:10px 10px 80px 40px;
@@ -38,8 +56,8 @@ p.thought {
 p.thought:before {
     content:"";
     position:absolute; /*see the support section below for more info*/
-    bottom:-40px; /*distance from the bottom of the bubble*/
-    left:20px; /*distance from the left edge of the bubble*/
+    bottom:-40px; /*distance from the bottom of the bubble -40*/
+    left:-20px; /*distance from the left edge of the bubble*/
     background:#f3961c;
     width:30px; /*same as the height*/
     height:30px; /*same as the width*/
@@ -51,14 +69,15 @@ p.thought:before {
     -webkit-box-shadow: -3px 3px 4px #989898;
     -moz-box-shadow: -3px 3px 4px #989898;
     box-shadow: -3px 3px 8px #989898;
+    /*top:100px;*/
 }
 /*****NOW THE SMALL CIRCLE***/
 /**Created exactly the same way as the large circle, except with smaller width, height and border-radius**/
 p.thought:after {
     content:"";
     position:absolute;
-    bottom:-55px;
-    left:0;
+    bottom:-55px; /* -55 */
+    left:-50px; /* 0 */
     width:15px;
     height:15px;
     background:#f3961c;
@@ -69,3 +88,27 @@ p.thought:after {
     -moz-box-shadow: -3px 3px 4px #989898;
     box-shadow: -3px 3px 8px #989898;
 }
+
+.demo {
+            padding: 50px;
+            border:1px solid #ccc;
+            font-weight:bold;
+            color: red;
+            background:#d0d0d0;
+            font-size:20px;
+            line-height:1.5;
+            text-align:center;
+        }
+
+        .demo h1 { font-size:72px;  text-transform:uppercase; margin-bottom:0px;}
+        .char2,
+        #demo2 .word2,
+        .line2 { color: orange; }
+        .char3,
+        .word3,
+        .line3 { color: yellow; }
+        .char4,
+        .line4 { color: blue; }
+        .char5 { color: green; }
+        .char6 { color: indigo; }
+        .char7 { color: violet; }
