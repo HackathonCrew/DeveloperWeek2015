@@ -11,8 +11,12 @@ def getMouthCoordinates(url):
             'apikey': '31379774-e946-4bff-b26e-35e93ea7a67e',
             'url' : url,
         })
-    face = loads(r.text)['face'][0]
-    face['offset'] = face['left'] + face['width'], int(face['height'] * .3)
+    try:
+        face = loads(r.text)['face'][0]
+        face['offset'] = face['left'] + face['width'], int(face['height'] * .3)
+    except:
+        return ''
+
     return face
     
 def addTextToIdol():

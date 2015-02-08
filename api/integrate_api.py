@@ -9,8 +9,9 @@ def getStatement():
     bio_id = ''
     result = {}
     count = 0
+    text_offset = ''
 
-    while not bio_id or not result:
+    while not bio_id or not result or not text_offset:
 
         person = randomPerson()
         first_name = person['first_name']
@@ -23,9 +24,10 @@ def getStatement():
             continue
 
         result = randomStatement(name_slug)
+        image_url = getImg(bio_id)
+        text_offset = getMouthCoordinates(image_url)
         count = count + 1
 
-    image_url = getImg(bio_id)
 
     data = {
         'politician':'{0} {1}'.format(first_name,last_name),
@@ -33,7 +35,7 @@ def getStatement():
         'party':result['party'],
         'image_url':image_url,
         'source_url':result['statement_url'],
-        'text_offset':getMouthCoordinates(image_url),
+        'text_offset':text_offset,
         'hits':count
     }
 
