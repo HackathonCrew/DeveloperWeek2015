@@ -7,6 +7,6 @@ from api import idol
 class Idol(TestCase):
     def test_getMouthCoordinates(self):
         mouthCoodinates = idol.getMouthCoordinates('http://theunitedstates.io/images/congress/450x550/P000197.jpg')
-        self.assertEqual(mouthCoodinates[0], 382)
-        self.assertEqual(mouthCoodinates[1], 81)
+        self.assertEqual(mouthCoodinates['offset'][0], 382)
+        self.assertEqual(mouthCoodinates['offset'][1], 81)
         

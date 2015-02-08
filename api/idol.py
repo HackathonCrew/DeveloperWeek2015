@@ -10,5 +10,5 @@ def getMouthCoordinates(url):
             'url' : url,
         })
     face = loads(r.text)['face'][0]
-    
-    return (face['left'] + face['width'], int(face['height'] * .3))
+    face['offset'] = face['left'] + face['width'], int(face['height'] * .3)
+    return face
