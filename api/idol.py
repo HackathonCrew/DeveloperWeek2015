@@ -41,10 +41,8 @@ def getRandomIdolPerson():
             'print' : 'all',
         })
     
-    person = loads(r.text)
+    person = loads(r.text)['documents'][0]
     
-    print person['documents'][0]
-    exit()
     related = findRelatedStatements(name)
     person['relatedStatements'] = related
     
@@ -145,7 +143,7 @@ def addPersonToIdol(person):
         text_param = getMouthCoordinates(image_url)
 
         print person['party']
-        
+        print '-----------------------party --------------------------------------'
         politicianDocument = {
         
             'reference':id,
