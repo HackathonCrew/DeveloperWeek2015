@@ -29,7 +29,6 @@ def getID(first_name,last_name):
         print '----------------is a person'
         person = person[0]
         id = str(person['bioguide_id'])
-        exit()
-
+        
     return id
 

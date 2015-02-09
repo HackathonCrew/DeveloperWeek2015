@@ -46,12 +46,6 @@ def getRandomIdolPerson():
     related = findRelatedStatements(name)
     person['relatedStatements'] = related
     
-    
-    
-    
-    
-    
-    
     print '----------------'
     print person
     return person
@@ -121,8 +115,7 @@ def addDocumentToIdol(statements, politicianName):
     
 def addPersonToIdol(person):
     print "adding person"
-    print person
-    print person['first_name'], person['last_name']
+    
     id = sunlight_api.getID(person['first_name'].strip(),person['last_name'].strip())
     print id
     if id:
@@ -133,8 +126,6 @@ def addPersonToIdol(person):
             print "no statements"
             return
             
-        print len(results)
-        print results
         addDocumentToIdol(results, '{0} {1}'.format(person['first_name'],person['last_name']))
         
         statements = [myResult['statement'] for myResult in results]
@@ -142,8 +133,6 @@ def addPersonToIdol(person):
         image_url = sunlight_api.getImg(id)
         text_param = getMouthCoordinates(image_url)
 
-        print person['party']
-        print '-----------------------party --------------------------------------'
         politicianDocument = {
         
             'reference':id,
@@ -154,7 +143,7 @@ def addPersonToIdol(person):
             'statement':statements,
             
             #extra json
-            'party':person['party'],
+            'party':person['party']['party'],
             'image_url':image_url,
             #'source_url':person['statement_url'],
             'img_width':text_param['width'],
