@@ -29,11 +29,7 @@ def getRandomIdolPerson():
             'field_name': 'politician'
     })
     
-    
-    print r
-    print r.text
     keys = loads(r.text)
-    print keys
     name = choice(keys['POLITICIAN'].keys())
     
     r = requests.post('https://api.idolondemand.com/1/api/sync/querytextindex/v1',
@@ -46,6 +42,9 @@ def getRandomIdolPerson():
         })
     
     person = loads(r.text)
+    
+    print person['documents'][0]
+    exit()
     related = findRelatedStatements(name)
     person['relatedStatements'] = related
     
@@ -145,6 +144,8 @@ def addPersonToIdol(person):
         image_url = sunlight_api.getImg(id)
         text_param = getMouthCoordinates(image_url)
 
+        print person['party']
+        
         politicianDocument = {
         
             'reference':id,
