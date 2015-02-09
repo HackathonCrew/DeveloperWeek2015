@@ -3,7 +3,7 @@ from json import loads,dumps
 from api import politifact_allpeople
 from api import politifact_api
 from api import sunlight_api
-
+from random import choice
 def getMouthCoordinates(url):
     r = requests.get(
         'https://api.idolondemand.com/1/api/sync/detectfaces/v1',
@@ -15,9 +15,49 @@ def getMouthCoordinates(url):
         face = loads(r.text)['face'][0]
         face['offset'] = face['left'] + face['width'], int(face['height'] * .3)
     except:
+        print r
+        print r.text    
         return ''
 
     return face
+
+def getRandomIdolPerson():
+    r = requests.post('https://api.idolondemand.com/1/api/sync/getparametricvalues/v1',
+        data={
+            'apikey':'31379774-e946-4bff-b26e-35e93ea7a67e',
+            'indexes':'politicians',
+            'field_name': 'politician'
+    })
+    
+    
+    print r
+    print r.text
+    keys = loads(r.text)
+    print keys
+    name = choice(keys['POLITICIAN'].keys())
+    
+    r = requests.post('https://api.idolondemand.com/1/api/sync/querytextindex/v1',
+        data={
+            'apikey':'31379774-e946-4bff-b26e-35e93ea7a67e',
+            'indexes':'politicians',
+            'field_text': 'MATCH{' + name + '}:politician',
+            'text': '*',
+            'print' : 'all',
+        })
+    
+    person = loads(r.text)
+    related = findRelatedStatements(name)
+    person['relatedStatements'] = related
+    
+    
+    
+    
+    
+    
+    
+    print '----------------'
+    print person
+    return person
 
 def addAllPeopleToIdol():
 
@@ -25,23 +65,7 @@ def addAllPeopleToIdol():
     count = 0
     
     for person in allPeople:
-        first_name = person['first_name']
-        last_name = person['last_name']
-        name_slug = person['name_slug']
-
-        print "trying " + first_name + " " + last_name
-        if not first_name:
-            continue
-        elif not last_name:
-            continue
-        elif person['party']['party']=='None':
-            continue
-        elif person['party']['party']=='Organization':
-            continue
-        elif person['party']['party']=='Journalist':
-            continue
-
-        addTextToIdol(person)
+        addPersonToIdol(person)
     
 def addTextToIdol(jsonDocument, index):
     try:
@@ -73,7 +97,7 @@ def findRelatedStatements(FullName):
                 'field_text': 'MATCH{' + FullName + '}:politician',
                 'index': 'statements',
             })
-        return r.text
+        return loads(r.text)
             
 
 def addDocumentToIdol(statements, politicianName):
@@ -144,5 +168,3 @@ def addPersonToIdol(person):
         json = [ politicianDocument ]
         
         addTextToIdol(json, 'politicians')
-
-# getRelatedConcepts('

@@ -12,16 +12,21 @@ def getStatement():
     count = 0
     text_offset = ''
 
+    
     while not bio_id or not result or not text_offset:
-
+        print 'bio_id:' + str(bio_id)
+        print 'result:' + str(result)
+        print 'text_offset:' + str(text_offset)
+        
         person = randomPerson()
         first_name = person['first_name']
         last_name = person['last_name']
         name_slug = person['name_slug']
         bio_id = getID(first_name,last_name)
-
+        
         if not bio_id:
             count = count + 1
+            print first_name, last_name
             continue
 
         result = randomStatement(name_slug)
