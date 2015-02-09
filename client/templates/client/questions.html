@@ -31,6 +31,7 @@
         <div>
             <img class="politics" id="img_polit" src = "{{politicians.image_url}}"/>
             <div id="box" ng-show="showFaceBox==true"></div>
+            <div bubble-chart chart-data="entities" id="chart" style="float:right;"></div>
             <p class="thought animated tada" id="bubble" ng-bind-html="politicians.statement"></p>
             <div class="politdata"> {{politicians.politician}} | {{politicians.party}}
                 <img class="result animated flash" src="static/css/img/green_check.png" ng-show="correct"/>
@@ -38,10 +39,6 @@
             </div>
         </div>
         <div class="footer">
-            <!-- <img class="result" src="static/css/img/green_check.png" ng-show="correct"/> -->
-            <!-- <img class="result" src="static/css/img/x-mark.png" ng-show="correct == false"/> -->
-            <!-- <p ng-show="correct">You were right!</p> -->
-            <!-- <p ng-show="correct == false">You were wrong!</p> -->
             <a ng-click = "showNewQuote()" class="btn btn-primary" role="button"> Play Again?</a>
             <label><input type="checkbox" checked="true" ng-model="showFaceBox"> Show Face Detection</label>
         </div>
