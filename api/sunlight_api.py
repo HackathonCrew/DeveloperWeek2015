@@ -2,7 +2,7 @@ import json
 from sunlight import congress,config
 # img_size = '450x550'
 img_size = '225x275'
-config.API_KEY = '16c32e40ccce456a98473e6ca3b7c718'
+config.API_KEY = '9336ef88e8d1490c826c340876470519'
 
 
 def getImg(bio_id):
@@ -18,13 +18,17 @@ def getImg(bio_id):
     return img_url
 
 def getID(first_name,last_name):
-
+    print "------------------------"
+    print first_name, last_name
     person = congress.legislators(last_name=last_name,first_name=first_name)
+    print person
     if not person:
+        print '--------------->not a person'
         id = ''
     else:
+        print '----------------is a person'
         person = person[0]
         id = str(person['bioguide_id'])
-
+        
     return id
 
